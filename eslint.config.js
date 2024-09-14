@@ -1,28 +1,39 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
+const { ESLint } = require('eslint');
+const typescriptEslintParser = require('@typescript-eslint/parser');
+const reactPlugin = require('eslint-plugin-react');
+const typescriptEslintPlugin = require('@typescript-eslint/eslint-plugin');
+const importPlugin = require('eslint-plugin-import');
+const reactRefreshPlugin = require('eslint-plugin-react-refresh');
+const reactHooksPlugin = require('eslint-plugin-react-hooks');
+const prettierPlugin = require('eslint-plugin-prettier');
 
-export default tseslint.config(
-  { ignores: ['dist'] },
+module.exports = [
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{ts,tsx}'],
+    files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+      parser: typescriptEslintParser,
     },
     plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
+      react: reactPlugin,
+      '@typescript-eslint': typescriptEslintPlugin,
+      import: importPlugin,
+      'react-refresh': reactRefreshPlugin,
+      'react-hooks': reactHooksPlugin,
+      prettier: prettierPlugin,
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
       ],
+      indent: ['error', 2],
+      'react/jsx-indent': ['error', 2],
+      'react/jsx-indent-props': ['error', 2],
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
     },
   },
-)
+];
