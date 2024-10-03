@@ -1,11 +1,11 @@
-const { ESLint } = require('eslint');
-const typescriptEslintParser = require('@typescript-eslint/parser');
-const reactPlugin = require('eslint-plugin-react');
-const typescriptEslintPlugin = require('@typescript-eslint/eslint-plugin');
-const importPlugin = require('eslint-plugin-import');
-const reactRefreshPlugin = require('eslint-plugin-react-refresh');
-const reactHooksPlugin = require('eslint-plugin-react-hooks');
-const prettierPlugin = require('eslint-plugin-prettier');
+import { ESLint } from 'eslint';
+import typescriptEslintParser from '@typescript-eslint/parser';
+import reactPlugin from 'eslint-plugin-react';
+import typescriptEslintPlugin from '@typescript-eslint/eslint-plugin';
+import importPlugin from 'eslint-plugin-import';
+import reactRefreshPlugin from 'eslint-plugin-react-refresh';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import prettierPlugin from 'eslint-plugin-prettier';
 
 module.exports = [
   {

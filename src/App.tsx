@@ -1,10 +1,11 @@
+import { BrowserRouter } from 'react-router-dom';
+import Router from './routes';
+
 function App() {
   return (
-    <>
-      <p className="bg-blue-200 font-sans text-xl font-bold text-red-500">
-        Tailwinds works
-      </p>
-    </>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   );
 }
 
