@@ -74,12 +74,17 @@ const data: EventProps[] = [
 
 const FeaturedEvents = () => {
   return (
-    <div className="mt-16 h-[100vh] w-full px-20 pt-5">
+    <div className="mt-16  w-full px-20 pt-5">
       <p className="items-center pb-5 text-center text-5xl">Featured Events</p>
       <div className="mt-5 grid grid-cols-3 gap-6">
         {data.map((event) => (
           <Event key={event.id} eventProps={event} />
         ))}
+      </div>
+      <div className="flex mt-3">
+        <button className="relative rounded border border-black px-5 py-1 w-[120px] m-[auto]">
+            See more
+        </button>
       </div>
     </div>
   );

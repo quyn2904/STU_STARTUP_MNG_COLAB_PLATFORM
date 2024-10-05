@@ -8,6 +8,9 @@ export default defineConfig({
   css: {
     devSourcemap: true,
   },
+  server: {
+    port: 3000,
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

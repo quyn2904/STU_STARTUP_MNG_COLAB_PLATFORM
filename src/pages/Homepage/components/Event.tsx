@@ -7,7 +7,7 @@ const TypeColors: Record<EventType, string> = {
 };
 
 const Event = ({ eventProps }: { eventProps: EventProps }) => {
-  const { coverImg, description, title, type, guest } = eventProps;
+  const { coverImg,description,title,type,guest} = eventProps;
   const color = TypeColors[type];
   return (
     <>
@@ -25,10 +25,10 @@ const Event = ({ eventProps }: { eventProps: EventProps }) => {
               </p>
             )}
           </div>
-          <p className="mt-2 overflow-hidden text-ellipsis text-justify text-[#686868]">
+          <p className="mt-2 text-ellipsis text-justify text-[#686868] truncate">
             {description}
           </p>
-          <button className="relative rounded border border-black px-5 py-1">
+          <button className="relative rounded border border-black px-5 py-1 w-[120px]">
             Join Now
           </button>
         </div>

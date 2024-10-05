@@ -1,5 +1,6 @@
 import Header from '../../layouts/Header';
 import FeaturedEvents from './components/FeaturedEvents';
+import FeaturedProjects from './components/FeaturedProjects';
 import Welcome from './components/Welcome';
 
 const Homepage = (): JSX.Element => {
@@ -8,6 +9,7 @@ const Homepage = (): JSX.Element => {
       <Header />
       <Welcome />
       <FeaturedEvents />
+      <FeaturedProjects/>
       <div className="h-[100vh]"></div>
     </>
   );
