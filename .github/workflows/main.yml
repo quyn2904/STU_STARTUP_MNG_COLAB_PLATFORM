@@ -16,6 +16,9 @@ jobs:
       - name: Docker build
         run: docker build -t stu_startup_mng_collab_platform .
 
+      - name: Docker stop old container
+        run: docker container stop stu_startup_fe
+
       - name: Docker remove old container
         run: docker container rm stu_startup_fe
 
