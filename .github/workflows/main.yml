@@ -23,4 +23,4 @@ jobs:
         run: docker container rm stu_startup_fe
 
       - name: Docker run
-        run: docker run -d -v :/etc/nginx/sites-available//usr/share/nginx/html --name stu_startup_fe -p 3333:80 stu_startup_mng_collab_platform
+        run: docker run -d --name stu_startup_fe -p 3333:80 stu_startup_mng_collab_platform
