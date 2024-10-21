@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
-    <div className="h-svh rounded-xl bg-[#EEF2F5] px-3 pt-10">
+    <div className="h-[85vh] rounded-xl bg-[#EEF2F5] px-3 pt-10">
       <p className="text-xl font-bold">Project Management</p>
       <ul className="mt-7">
         <li className="mt-2">

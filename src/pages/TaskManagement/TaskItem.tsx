@@ -23,9 +23,9 @@ const TaskItem = ({
   header,
   tag,
   users,
-  comment,
+  // comment,
   description,
-  items,
+  // items,
 }: TaskItemProps) => {
   return (
     <div className="mt-2 min-w-[85%] rounded-lg bg-white px-3 py-3">

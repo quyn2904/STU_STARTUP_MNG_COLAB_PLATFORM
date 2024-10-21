@@ -1,7 +1,7 @@
 import { FaPlus } from 'react-icons/fa6';
 import { HiDotsHorizontal } from 'react-icons/hi';
 import TaskItem from './TaskItem';
-import { Avatar, AvatarImage } from '../../components/ui/avatar';
+import { Avatar, AvatarImage } from '../../components/ui';
 
 const TaskManagement = () => {
   return (
