@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Homepage from '../pages/Homepage';
 import Login from '../pages/Login';
+import ProjectManagementPage from '../pages/ProjectManagementPage';
 
 interface RouteType {
   path: string;
@@ -12,6 +13,10 @@ const publicRoutes: RouteType[] = [
   {
     path: '/',
     element: <Homepage />,
+  },
+  {
+    path: '/project-management',
+    element: <ProjectManagementPage />,
   },
 ];
 
