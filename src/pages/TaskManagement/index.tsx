@@ -1,9 +1,9 @@
 import { FaPlus } from 'react-icons/fa6';
 import { HiDotsHorizontal } from 'react-icons/hi';
 import TaskItem from './TaskItem';
-import { Avatar, AvatarImage } from '../../../components/ui/avatar';
+import { Avatar, AvatarImage } from '../../components/ui/avatar';
 
-const TaskManagementForm = () => {
+const TaskManagement = () => {
   return (
     <div className="mt-4">
       <div className="flex items-center justify-between">
@@ -30,7 +30,7 @@ const TaskManagementForm = () => {
         </div>
       </div>
       <div className="mt-2 grid grid-cols-4 gap-4">
-        <div className="h-svh rounded-xl bg-[#EEF2F5] px-3 py-3">
+        <div className="h-fit rounded-xl bg-[#EEF2F5] px-3 py-3">
           <div className="mb-3 flex items-center justify-between">
             <p className="font-bold">To do</p>
             <div className="flex gap-2">
@@ -77,7 +77,7 @@ const TaskManagementForm = () => {
             />
           </div>
         </div>
-        <div className="h-svh rounded-xl bg-[#EEF2F5] px-3 py-3">
+        <div className="h-fit rounded-xl bg-[#EEF2F5] px-3 py-3">
           <div className="mb-3 flex items-center justify-between">
             <p className="font-bold">Doing</p>
             <div className="flex gap-2">
@@ -98,7 +98,7 @@ const TaskManagementForm = () => {
             description="Create a moodboard for the new project"
           />
         </div>
-        <div className="h-svh rounded-xl bg-[#EEF2F5] px-3 py-3">
+        <div className="h-fit rounded-xl bg-[#EEF2F5] px-3 py-3">
           <div className="mb-3 flex items-center justify-between">
             <p className="font-bold">Done</p>
             <div className="flex gap-2">
@@ -130,4 +130,4 @@ const TaskManagementForm = () => {
   );
 };
 
-export default TaskManagementForm;
+export default TaskManagement;

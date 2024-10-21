@@ -1,6 +1,6 @@
+import { Outlet } from 'react-router-dom';
 import Header from '../../layouts/Header';
 import Sidebar from './components/Sidebar';
-import TaskManagementForm from './components/TaskManagementForm';
 
 const ProjectManagementPage = () => {
   return (
@@ -11,7 +11,7 @@ const ProjectManagementPage = () => {
           <Sidebar />
         </div>
         <div className="col-span-9">
-          <TaskManagementForm />
+          <Outlet />
         </div>
       </div>
     </>

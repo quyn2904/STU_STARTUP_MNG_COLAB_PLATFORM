@@ -1,38 +1,49 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  Navigate,
+  RouteObject,
+  RouterProvider,
+} from 'react-router-dom';
 import Homepage from '../pages/Homepage';
 import Login from '../pages/Login';
 import ProjectManagementPage from '../pages/ProjectManagementPage';
+import TaskManagement from '../pages/TaskManagement';
+import ProjectDetail from '../pages/ProjectDetail';
 
-interface RouteType {
-  path: string;
-  element: JSX.Element;
-  children?: RouteType[];
-}
-
-const publicRoutes: RouteType[] = [
+const publicRoutes: RouteObject[] = [
   {
     path: '/',
     element: <Homepage />,
   },
   {
-    path: '/project-management',
+    path: 'project-management',
     element: <ProjectManagementPage />,
+    children: [
+      {
+        element: <TaskManagement />,
+        index: true,
+      },
+      {
+        path: ':projectId',
+        element: <ProjectDetail />,
+      },
+    ],
   },
 ];
 
 // const authenticatedRoutes: RouteType[] = [];
 
-const unauthenticatedRoutes: RouteType[] = [
+const unauthenticatedRoutes: RouteObject[] = [
   {
     path: '/login',
     element: <Login />,
   },
 ];
 
-const Router = (): JSX.Element => {
+const AppRouter = (): React.ReactElement => {
   // const { token } = useAuth();
 
-  const router = [
+  const router = createBrowserRouter([
     ...publicRoutes,
     ...unauthenticatedRoutes,
     // ...(token ? authenticatedRoutes : unauthenticatedRoutes),
@@ -40,15 +51,9 @@ const Router = (): JSX.Element => {
       path: '*',
       element: <Navigate to="/404" />,
     },
-  ];
+  ]);
 
-  return (
-    <Routes>
-      {router.map((route) => (
-        <Route key={route.path} path={route.path} element={route.element} />
-      ))}
-    </Routes>
-  );
+  return <RouterProvider router={router} />;
 };
 
-export default Router;
+export default AppRouter;

@@ -1,7 +1,7 @@
 import { HiDotsHorizontal } from 'react-icons/hi';
 import { FaRegCommentAlt } from 'react-icons/fa';
 import { FaRegFileLines } from 'react-icons/fa6';
-import { Avatar, AvatarImage } from '../../../components/ui/avatar';
+import { Avatar, AvatarImage } from '../../components/ui/avatar';
 type taskType = 'Design' | 'Development';
 
 type TaskItemProps = {
