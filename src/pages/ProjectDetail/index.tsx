@@ -1,8 +1,10 @@
 import { useParams } from 'react-router-dom';
-import DatePicker from '../../common/components/DatePicker';
+import { DateTimePicker } from '../../common/components/DateTimePicker';
+import { useState } from 'react';
 
 const ProjectDetail = () => {
   let { projectId } = useParams<{ projectId: string }>();
+  const [date, setDate] = useState<Date | undefined>(undefined);
 
   return (
     <div className="mt-4">
@@ -36,9 +38,9 @@ const ProjectDetail = () => {
             <p className="mb-3 font-bold">Time</p>
             <div className="rounded-lg bg-white px-3 py-3 text-sm">
               <p>Start date</p>
-              <DatePicker />
+              <DateTimePicker value={date} onChange={setDate} />
               <p>Due date</p>
-              <DatePicker />
+              <DateTimePicker value={date} onChange={setDate} />
             </div>
           </div>
           <div className="mt-4 h-fit rounded-xl bg-[#EEF2F5] px-3 py-3">

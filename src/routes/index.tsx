@@ -4,16 +4,19 @@ import {
   RouteObject,
   RouterProvider,
 } from 'react-router-dom';
-import Homepage from '../pages/Homepage';
-import Login from '../pages/Login';
-import ProjectManagementPage from '../pages/ProjectManagementPage';
-import TaskManagement from '../pages/TaskManagement';
-import ProjectDetail from '../pages/ProjectDetail';
+import {
+  HomePage,
+  Login,
+  ProjectDetail,
+  ProjectManagementPage,
+  TaskManagement,
+  Timeline,
+} from '../pages';
 
 const publicRoutes: RouteObject[] = [
   {
     path: '/',
-    element: <Homepage />,
+    element: <HomePage />,
   },
   {
     path: 'project-management',
@@ -22,6 +25,10 @@ const publicRoutes: RouteObject[] = [
       {
         element: <TaskManagement />,
         index: true,
+      },
+      {
+        path: 'timeline',
+        element: <Timeline />,
       },
       {
         path: ':projectId',

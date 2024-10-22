@@ -1,9 +1,243 @@
 import { FaPlus } from 'react-icons/fa6';
 import { HiDotsHorizontal } from 'react-icons/hi';
-import TaskItem from './TaskItem';
+import TaskItem, { TaskItemProps, TaskStatus } from './TaskItem';
 import { Avatar, AvatarImage } from '../../components/ui';
+import { useState } from 'react';
+import { DndContext, DragEndEvent } from '@dnd-kit/core';
+import DroppableField from './DroppableFIeld';
 
 const TaskManagement = () => {
+  const [tasks, setTasks] = useState<TaskItemProps[]>([
+    {
+      id: '1',
+      header: 'Moodboard 1',
+      tag: 'Design',
+      status: 'doing',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat',
+      users: [
+        {
+          name: 'simmy',
+          avatar_url:
+            'https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/474095hSm/anh-avatar-con-meo-cute_051723184.jpg',
+        },
+        {
+          name: 'pika pika',
+          avatar_url: 'https://lacdau.com/media/product/250-2332-4.jpg',
+        },
+        {
+          name: 'zo tri',
+          avatar_url:
+            'https://cdn.diendanxaydung.net.vn/wp-content/uploads/2024/09/avatar-vo-tri-cute-meo-1.jpg',
+        },
+      ],
+      comments: [
+        {
+          author: 'ahihi',
+          content: 'ahihi',
+        },
+        {
+          author: 'ahihi',
+          content: 'ahihi',
+        },
+        {
+          author: 'ahihi',
+          content: 'ahihi',
+        },
+        {
+          author: 'ahihi',
+          content: 'ahihi',
+        },
+      ],
+      files: [new File([''], 'file1'), new File([''], 'file2')],
+    },
+    {
+      id: '2',
+      header: 'Moodboard 2',
+      tag: 'Development',
+      status: 'todo',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat',
+      users: [
+        {
+          name: 'simmy',
+          avatar_url:
+            'https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/474095hSm/anh-avatar-con-meo-cute_051723184.jpg',
+        },
+        {
+          name: 'pika pika',
+          avatar_url: 'https://lacdau.com/media/product/250-2332-4.jpg',
+        },
+        {
+          name: 'zo tri',
+          avatar_url:
+            'https://cdn.diendanxaydung.net.vn/wp-content/uploads/2024/09/avatar-vo-tri-cute-meo-1.jpg',
+        },
+      ],
+      comments: [
+        {
+          author: 'ahihi',
+          content: 'ahihi',
+        },
+        {
+          author: 'ahihi',
+          content: 'ahihi',
+        },
+        {
+          author: 'ahihi',
+          content: 'ahihi',
+        },
+        {
+          author: 'ahihi',
+          content: 'ahihi',
+        },
+      ],
+      files: [new File([''], 'file1'), new File([''], 'file2')],
+    },
+    {
+      id: '3',
+      header: 'Moodboard3',
+      tag: 'Design',
+      status: 'todo',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat',
+      users: [
+        {
+          name: 'simmy',
+          avatar_url:
+            'https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/474095hSm/anh-avatar-con-meo-cute_051723184.jpg',
+        },
+        {
+          name: 'pika pika',
+          avatar_url: 'https://lacdau.com/media/product/250-2332-4.jpg',
+        },
+        {
+          name: 'zo tri',
+          avatar_url:
+            'https://cdn.diendanxaydung.net.vn/wp-content/uploads/2024/09/avatar-vo-tri-cute-meo-1.jpg',
+        },
+      ],
+      comments: [
+        {
+          author: 'ahihi',
+          content: 'ahihi',
+        },
+        {
+          author: 'ahihi',
+          content: 'ahihi',
+        },
+        {
+          author: 'ahihi',
+          content: 'ahihi',
+        },
+        {
+          author: 'ahihi',
+          content: 'ahihi',
+        },
+      ],
+      files: [new File([''], 'file1'), new File([''], 'file2')],
+    },
+    {
+      id: '4',
+      header: 'Moodboard 4',
+      tag: 'Development',
+      status: 'done',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat',
+      users: [
+        {
+          name: 'simmy',
+          avatar_url:
+            'https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/474095hSm/anh-avatar-con-meo-cute_051723184.jpg',
+        },
+        {
+          name: 'pika pika',
+          avatar_url: 'https://lacdau.com/media/product/250-2332-4.jpg',
+        },
+        {
+          name: 'zo tri',
+          avatar_url:
+            'https://cdn.diendanxaydung.net.vn/wp-content/uploads/2024/09/avatar-vo-tri-cute-meo-1.jpg',
+        },
+      ],
+      comments: [
+        {
+          author: 'ahihi',
+          content: 'ahihi',
+        },
+        {
+          author: 'ahihi',
+          content: 'ahihi',
+        },
+        {
+          author: 'ahihi',
+          content: 'ahihi',
+        },
+        {
+          author: 'ahihi',
+          content: 'ahihi',
+        },
+      ],
+      files: [new File([''], 'file1'), new File([''], 'file2')],
+    },
+    {
+      id: '5',
+      header: 'Moodboard 5',
+      tag: 'Development',
+      status: 'todo',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat',
+      users: [
+        {
+          name: 'simmy',
+          avatar_url:
+            'https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/474095hSm/anh-avatar-con-meo-cute_051723184.jpg',
+        },
+        {
+          name: 'pika pika',
+          avatar_url: 'https://lacdau.com/media/product/250-2332-4.jpg',
+        },
+        {
+          name: 'zo tri',
+          avatar_url:
+            'https://cdn.diendanxaydung.net.vn/wp-content/uploads/2024/09/avatar-vo-tri-cute-meo-1.jpg',
+        },
+      ],
+      comments: [
+        {
+          author: 'ahihi',
+          content: 'ahihi',
+        },
+        {
+          author: 'ahihi',
+          content: 'ahihi',
+        },
+        {
+          author: 'ahihi',
+          content: 'ahihi',
+        },
+        {
+          author: 'ahihi',
+          content: 'ahihi',
+        },
+      ],
+      files: [new File([''], 'file1'), new File([''], 'file2')],
+    },
+  ]);
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+    if (over) {
+      const newTasks = tasks.map((task) => {
+        if (task.id === active.id) {
+          return { ...task, status: over?.id as TaskStatus };
+        }
+        return task;
+      });
+      over && setTasks(newTasks);
+    }
+  };
+
   return (
     <div className="mt-4">
       <div className="flex items-center justify-between">
@@ -30,101 +264,62 @@ const TaskManagement = () => {
         </div>
       </div>
       <div className="mt-2 grid grid-cols-4 gap-4">
-        <div className="h-fit rounded-xl bg-[#EEF2F5] px-3 py-3">
-          <div className="mb-3 flex items-center justify-between">
-            <p className="font-bold">To do</p>
-            <div className="flex gap-2">
-              <FaPlus />
-              <HiDotsHorizontal />
+        <DndContext onDragEnd={handleDragEnd}>
+          <div className="h-fit rounded-xl bg-[#EEF2F5] px-3 py-3">
+            <div className="mb-3 flex items-center justify-between">
+              <p className="font-bold">To do</p>
+              <div className="flex gap-2">
+                <FaPlus />
+                <HiDotsHorizontal />
+              </div>
+            </div>
+            <DroppableField key="todo" id="todo">
+              {tasks
+                .filter((task) => task.status === 'todo')
+                .map((task) => (
+                  <TaskItem key={task.id} props={task} />
+                ))}
+            </DroppableField>
+          </div>
+          <div className="h-fit rounded-xl bg-[#EEF2F5] px-3 py-3">
+            <div className="mb-3 flex items-center justify-between">
+              <p className="font-bold">Doing</p>
+              <div className="flex gap-2">
+                <FaPlus />
+                <HiDotsHorizontal />
+              </div>
+            </div>
+            <DroppableField key="doing" id="doing">
+              {tasks
+                .filter((task) => task.status === 'doing')
+                .map((task) => (
+                  <TaskItem key={task.id} props={task} />
+                ))}
+            </DroppableField>
+          </div>
+          <div className="h-fit rounded-xl bg-[#EEF2F5] px-3 py-3">
+            <div className="mb-3 flex items-center justify-between">
+              <p className="font-bold">Done</p>
+              <div className="flex gap-2">
+                <FaPlus />
+                <HiDotsHorizontal />
+              </div>
+            </div>
+            <DroppableField key="done" id="done">
+              {tasks
+                .filter((task) => task.status === 'done')
+                .map((task) => (
+                  <TaskItem key={task.id} props={task} />
+                ))}
+            </DroppableField>
+          </div>
+          <div className="h-fit rounded-xl bg-[#EEF2F5] px-3 py-3">
+            <div className="mb-3 flex items-center gap-1">
+              <FaPlus className="text-sm" />
+              <p className="font-bold">Add to cart</p>
             </div>
           </div>
-          <div>
-            <TaskItem
-              header="Moodboard"
-              tag="Design"
-              users={[
-                {
-                  name: 'ahihi',
-                  avatar_url:
-                    'https://cdn.kona-blue.com/upload/kona-blue_com/post/images/2024/08/13/356/avatar-vo-tri-meo-3.jpg',
-                },
-              ]}
-              description="Create a moodboard for the new project"
-            />
-            <TaskItem
-              header="Moodboard"
-              tag="Design"
-              users={[
-                {
-                  name: 'ahihi',
-                  avatar_url:
-                    'https://cdn.kona-blue.com/upload/kona-blue_com/post/images/2024/08/13/356/avatar-vo-tri-meo-3.jpg',
-                },
-              ]}
-              description="Create a moodboard for the new project"
-            />
-            <TaskItem
-              header="Moodboard"
-              tag="Design"
-              users={[
-                {
-                  name: 'ahihi',
-                  avatar_url:
-                    'https://cdn.kona-blue.com/upload/kona-blue_com/post/images/2024/08/13/356/avatar-vo-tri-meo-3.jpg',
-                },
-              ]}
-              description="Create a moodboard for the new project"
-            />
-          </div>
-        </div>
-        <div className="h-fit rounded-xl bg-[#EEF2F5] px-3 py-3">
-          <div className="mb-3 flex items-center justify-between">
-            <p className="font-bold">Doing</p>
-            <div className="flex gap-2">
-              <FaPlus />
-              <HiDotsHorizontal />
-            </div>
-          </div>
-          <TaskItem
-            header="Moodboard"
-            tag="Design"
-            users={[
-              {
-                name: 'ahihi',
-                avatar_url:
-                  'https://cdn.kona-blue.com/upload/kona-blue_com/post/images/2024/08/13/356/avatar-vo-tri-meo-3.jpg',
-              },
-            ]}
-            description="Create a moodboard for the new project"
-          />
-        </div>
-        <div className="h-fit rounded-xl bg-[#EEF2F5] px-3 py-3">
-          <div className="mb-3 flex items-center justify-between">
-            <p className="font-bold">Done</p>
-            <div className="flex gap-2">
-              <FaPlus />
-              <HiDotsHorizontal />
-            </div>
-          </div>
-          <TaskItem
-            header="Moodboard"
-            tag="Design"
-            users={[
-              {
-                name: 'ahihi',
-                avatar_url:
-                  'https://cdn.kona-blue.com/upload/kona-blue_com/post/images/2024/08/13/356/avatar-vo-tri-meo-3.jpg',
-              },
-            ]}
-            description="Create a moodboard for the new project"
-          />
-        </div>
-        <div className="h-fit rounded-xl bg-[#EEF2F5] px-3 py-3">
-          <div className="mb-3 flex items-center gap-1">
-            <FaPlus className="text-sm" />
-            <p className="font-bold">Add to cart</p>
-          </div>
-        </div>
+        </DndContext>
       </div>
     </div>
   );
