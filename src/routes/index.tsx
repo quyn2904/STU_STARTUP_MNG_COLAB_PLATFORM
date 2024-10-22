@@ -15,7 +15,7 @@ const publicRoutes: RouteType[] = [
   },
 ];
 
-// const authenticatedRoutes: RouteType[] = [];
+// const authenticatedRoutes: RouteType[]  = [];
 
 const unauthenticatedRoutes: RouteType[] = [
   {
