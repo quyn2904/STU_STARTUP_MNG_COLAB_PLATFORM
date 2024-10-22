@@ -38,7 +38,7 @@ const publicRoutes: RouteObject[] = [
   },
 ];
 
-// const authenticatedRoutes: RouteType[] = [];
+// const authenticatedRoutes: RouteType[]  = [];
 
 const unauthenticatedRoutes: RouteObject[] = [
   {
