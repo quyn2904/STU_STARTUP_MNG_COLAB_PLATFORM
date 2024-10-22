@@ -1,0 +1,17 @@
+name: Docker Run on Merge PR
+on:
+  push:
+    branches:
+      - main
+jobs:
+  docker-run:
+    runs-on: self-hosted
+    steps:
+      - name: Docker stop old container
+        run: docker container stop stu_startup_fe
+
+      - name: Docker remove old container
+        run: docker container rm stu_startup_fe
+
+      - name: Docker run
+        run: docker run -d --name stu_startup_fe -p 3333:80 stu_startup_mng_collab_platform
