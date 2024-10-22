@@ -4,7 +4,7 @@ import TaskItem, { TaskItemProps, TaskStatus } from './TaskItem';
 import { Avatar, AvatarImage } from '../../components/ui';
 import { useState } from 'react';
 import { DndContext, DragEndEvent } from '@dnd-kit/core';
-import DroppableField from './DroppableFIeld';
+import DroppableField from './DroppableField';
 
 const TaskManagement = () => {
   const [tasks, setTasks] = useState<TaskItemProps[]>([
