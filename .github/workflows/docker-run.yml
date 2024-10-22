@@ -1,20 +1,12 @@
-name: Continuous Deployment
-
+name: Docker Run on Merge PR
 on:
-  pull_request:
+  push:
     branches:
       - main
-
 jobs:
-  deploy:
+  docker-run:
     runs-on: self-hosted
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Docker build
-        run: docker build -t stu_startup_mng_collab_platform .
-
       - name: Docker stop old container
         run: docker container stop stu_startup_fe
 
