@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <div className="grid h-16 grid-cols-10 items-center gap-10 px-20 pb-5 pt-7">
       <div className="col-span-1">
-        <Logo />
+        <Logo fill="#023C5A" />
       </div>
       <div className="col-span-6 pl-20">
         <ul className="flex gap-7">
