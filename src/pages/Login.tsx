@@ -3,6 +3,9 @@ import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { FcGoogle } from 'react-icons/fc';
 import { useForm } from 'react-hook-form';
+import http from '../utils/http';
+import { toast } from 'react-toastify';
+import { AxiosError } from 'axios';
 
 const Login = (): JSX.Element => {
   const { register, handleSubmit } = useForm<{
@@ -10,8 +13,20 @@ const Login = (): JSX.Element => {
     password: string;
   }>();
 
-  const onSubmit = (data: { email: string; password: string }) =>
-    console.log(data);
+  const onSubmit = async (data: { email: string; password: string }) => {
+    try {
+      const response = await http({
+        method: 'POST',
+        url: '/Auth/login',
+        data: data,
+      });
+      if (response.status === 200) {
+        toast.success('Login successfully');
+      }
+    } catch (err: AxiosError | any) {
+      toast.error(err);
+    }
+  };
   return (
     <div className="absolute left-1/2 top-1/2 flex h-fit min-h-[600px] min-w-[700px] -translate-x-1/2 -translate-y-1/2 transform flex-col items-center bg-[#013C5A] py-16 text-white">
       <div className="mb-10 scale-150">
