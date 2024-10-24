@@ -1,33 +1,60 @@
-import { Link } from 'react-router-dom';
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarHeader,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+} from '../../../components/ui/sidebar';
+import { VscProject } from 'react-icons/vsc';
 
-const Sidebar = () => {
+const SideBar = () => {
   return (
-    <div className="h-[85vh] rounded-xl bg-[#EEF2F5] px-3 pt-10">
-      <p className="text-xl font-bold">Project Management</p>
-      <ul className="mt-7">
-        <li className="mt-2">
-          <Link to="/" className="font-semibold text-[#013C5A]">
-            Task Management
-          </Link>
-        </li>
-        <li className="mt-2">
-          <Link to="/" className="">
-            Timeline
-          </Link>
-        </li>
-        <li className="mt-2">
-          <Link to="/" className="mt-2">
-            Calendar Mentor
-          </Link>
-        </li>
-        <li className="mt-2">
-          <Link to="/" className="mt-2">
-            Financial Report
-          </Link>
-        </li>
-      </ul>
-    </div>
+    <Sidebar className="bottom-0 translate-y-40" collapsible="icon">
+      <SidebarContent>
+        <SidebarMenuItem>
+          <SidebarMenuButton isActive>
+            <VscProject />
+            <a href="#">
+              <span className="text-xl font-bold">Project Management</span>
+            </a>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+        <SidebarMenuSub>
+          <SidebarMenuSubItem>
+            <SidebarMenuSubButton>
+              <a href="#">
+                <span className="font-semibold">Task Management</span>
+              </a>
+            </SidebarMenuSubButton>
+          </SidebarMenuSubItem>
+          <SidebarMenuSubItem>
+            <SidebarMenuSubButton>
+              <a href="#">
+                <span className="font-semibold">Timeline</span>
+              </a>
+            </SidebarMenuSubButton>
+          </SidebarMenuSubItem>
+          <SidebarMenuSubItem>
+            <SidebarMenuSubButton>
+              <a href="#">
+                <span className="font-semibold">Calendar Mentor</span>
+              </a>
+            </SidebarMenuSubButton>
+          </SidebarMenuSubItem>
+          <SidebarMenuSubItem>
+            <SidebarMenuSubButton>
+              <a href="#">
+                <span className="font-semibold">Financial Report</span>
+              </a>
+            </SidebarMenuSubButton>
+          </SidebarMenuSubItem>
+        </SidebarMenuSub>
+      </SidebarContent>
+    </Sidebar>
   );
 };
 
-export default Sidebar;
+export default SideBar;

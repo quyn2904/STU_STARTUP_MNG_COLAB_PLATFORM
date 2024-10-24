@@ -5,6 +5,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import {
+  Base,
   HomePage,
   Login,
   ProjectDetail,
@@ -16,23 +17,29 @@ import {
 const publicRoutes: RouteObject[] = [
   {
     path: '/',
-    element: <HomePage />,
-  },
-  {
-    path: 'project-management',
-    element: <ProjectManagementPage />,
+    element: <Base />,
     children: [
       {
-        element: <TaskManagement />,
+        element: <HomePage />,
         index: true,
       },
       {
-        path: 'timeline',
-        element: <Timeline />,
-      },
-      {
-        path: ':projectId',
-        element: <ProjectDetail />,
+        path: 'project-management',
+        element: <ProjectManagementPage />,
+        children: [
+          {
+            element: <TaskManagement />,
+            index: true,
+          },
+          {
+            path: 'timeline',
+            element: <Timeline />,
+          },
+          {
+            path: ':projectId',
+            element: <ProjectDetail />,
+          },
+        ],
       },
     ],
   },

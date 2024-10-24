@@ -1,10 +1,13 @@
 import { useParams } from 'react-router-dom';
-import { DateTimePicker } from '../../common/components/DateTimePicker';
-import { useState } from 'react';
+import Reminder from './components/Reminder';
+import Status from './components/Status';
+import Description from './components/Description';
+import Comments from './components/Comments';
+import FilesAttachment from './components/FilesAttachment';
+import Members from './components/Members';
 
 const ProjectDetail = () => {
   let { projectId } = useParams<{ projectId: string }>();
-  const [date, setDate] = useState<Date | undefined>(undefined);
 
   return (
     <div className="mt-4">
@@ -14,55 +17,28 @@ const ProjectDetail = () => {
 
       <div className="mt-2 grid grid-cols-4 gap-4">
         <div className="h-[76.5vh] rounded-xl bg-[#EEF2F5] px-3 py-3">
-          <p className="mb-3 font-bold">Description</p>
-          <div className="h-max rounded-lg bg-white px-3 py-3 text-justify text-sm">
-            <p>
-              All designs need to be responsive. The requirement is that it fits
-              all web and mobile screens.All designs need to be responsive. The
-              requirement is that it fits all web and mobile screens.All designs
-              need to be responsive. The requirement is that it fits all web and
-              mobile screens.
-              <br /> <br />
-              All designs need to be responsive. The re is that it fits all web
-              and mobile screens. All designs need to be responsive. The
-              requirement is that it fits all web and mobile screens.
-              <br /> <br />
-              All designs need to be responsive. The requirement is that it fits
-              all web and mobile screens.
-            </p>
-          </div>
+          <Description />
         </div>
 
         <div>
           <div className="h-fit rounded-xl bg-[#EEF2F5] px-3 py-3">
-            <p className="mb-3 font-bold">Time</p>
-            <div className="rounded-lg bg-white px-3 py-3 text-sm">
-              <p>Start date</p>
-              <DateTimePicker value={date} onChange={setDate} />
-              <p>Due date</p>
-              <DateTimePicker value={date} onChange={setDate} />
-            </div>
+            <Reminder />
           </div>
           <div className="mt-4 h-fit rounded-xl bg-[#EEF2F5] px-3 py-3">
-            <p className="mb-3 font-bold">Project Status</p>
-            <div>{/* content here */}</div>
+            <Status />
           </div>
         </div>
 
-        <div className="h-[76.5vh] rounded-xl bg-[#EEF2F5] px-3 py-3">
-          <p className="mb-3 font-bold">Comments</p>
-          <div>{/* content here */}</div>
+        <div className="h-fit rounded-xl bg-[#EEF2F5] px-3 py-3">
+          <Comments />
         </div>
 
         <div>
           <div className="h-fit rounded-xl bg-[#EEF2F5] px-3 py-3">
-            <p className="mb-3 font-bold">Project Members</p>
-            <div>{/* content here */}</div>
+            <Members />
           </div>
-
           <div className="mt-4 h-fit rounded-xl bg-[#EEF2F5] px-3 py-3">
-            <p className="mb-3 font-bold">Project Members</p>
-            <div>{/* content here */}</div>
+            <FilesAttachment />
           </div>
         </div>
       </div>
